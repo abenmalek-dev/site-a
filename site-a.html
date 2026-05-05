@@ -36,7 +36,6 @@
   .page-title span{color:var(--accent);}
   .page-desc{color:var(--text2);font-size:14px;margin-top:8px;}
  
-  /* STATS */
   .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:28px;}
   .stat{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;position:relative;overflow:hidden;}
   .stat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
@@ -44,7 +43,6 @@
   .stat-val{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--accent);}
   .stat-sub{font-size:11px;color:var(--text2);margin-top:3px;}
  
-  /* TABS */
   .tabs{display:flex;gap:4px;margin-bottom:20px;border-bottom:1px solid var(--border);padding-bottom:0;}
   .tab{padding:10px 18px;font-family:'DM Mono',monospace;font-size:12px;cursor:pointer;border-bottom:2px solid transparent;color:var(--text2);transition:all 0.2s;margin-bottom:-1px;}
   .tab.active{color:var(--accent);border-bottom-color:var(--accent);}
@@ -52,7 +50,6 @@
   .tab-content{display:none;}
   .tab-content.active{display:block;}
  
-  /* TABLE */
   .table-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;}
   .table-card-header{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:rgba(59,130,246,0.04);}
   .table-card-title{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;display:flex;align-items:center;gap:8px;}
@@ -70,7 +67,6 @@
   .pill-green{background:rgba(16,185,129,0.15);color:var(--success);}
   .pill-amber{background:rgba(245,158,11,0.15);color:var(--warning);}
  
-  /* ITINERARY */
   .itinerary-form{display:flex;gap:12px;margin-bottom:20px;align-items:center;}
   .itinerary-form input{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 16px;color:var(--text);font-family:'DM Mono',monospace;font-size:13px;width:200px;}
   .itinerary-form button{background:var(--accent);border:none;border-radius:8px;padding:10px 20px;color:white;font-family:'DM Mono',monospace;font-size:13px;cursor:pointer;transition:opacity 0.2s;}
@@ -83,7 +79,6 @@
  
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
  
-  /* SQL panel */
   .sql-panel{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;}
   .sql-panel-header{padding:12px 18px;background:rgba(59,130,246,0.04);border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;font-size:11px;color:var(--text2);display:flex;align-items:center;gap:8px;}
   .sql-dot{width:8px;height:8px;border-radius:50%;}
@@ -97,26 +92,24 @@
     <div class="logo-icon">B2</div>
     <div>
       <div class="logo-title">Batna 2 University</div>
-      <div class="logo-sub">SITE A · north_user · FREEPDB1</div>
+      <div class="logo-sub">SITE A · north_user · PostgreSQL</div>
     </div>
   </div>
   <nav>
     <a href="/" >Home</a>
     <a href="site-a.html" class="active">Site A</a>
     <a href="site-b.html">Site B</a>
-    <a href="site-c.html">Site C</a>
   </nav>
-  <div class="badge-live"><div class="dot"></div>LIVE · Oracle 23ai</div>
+  <div class="badge-live"><div class="dot"></div>LIVE · Supabase</div>
 </header>
  
 <div class="page">
   <div class="page-header">
     <div class="page-tag">⬡ NODE A · HORIZONTAL + VERTICAL + MIXED FRAGMENTATION</div>
     <div class="page-title">Batna 2 <span>Local Fragment</span></div>
-    <div class="page-desc">This node owns the main tables and their fragments. Data is fetched live from north_user @ FREEPDB1.</div>
+    <div class="page-desc">This node owns the main tables and their fragments. Data is fetched live from the North Supabase database.</div>
   </div>
  
-  <!-- STATS -->
   <div class="stats" id="stats">
     <div class="stat"><div class="stat-label">TOURISTS</div><div class="stat-val" id="s-tourists">...</div><div class="stat-sub">Local records</div></div>
     <div class="stat"><div class="stat-label">TRIPS (NORTH)</div><div class="stat-val" id="s-trips">...</div><div class="stat-sub">Horizontal frag</div></div>
@@ -125,7 +118,6 @@
     <div class="stat"><div class="stat-label">FRAGMENTS</div><div class="stat-val" style="color:var(--success)">5</div><div class="stat-sub">H + V + Mixed</div></div>
   </div>
  
-  <!-- TABS -->
   <div class="tabs">
     <div class="tab active" onclick="switchTab('tourists')">👤 Tourists</div>
     <div class="tab" onclick="switchTab('fragments')">⬡ Fragments</div>
@@ -135,25 +127,23 @@
     <div class="tab" onclick="switchTab('sql')">💻 SQL</div>
   </div>
  
-  <!-- TAB: TOURISTS -->
   <div class="tab-content active" id="tab-tourists">
     <div class="grid2">
       <div class="table-card">
         <div class="table-card-header">
           <div class="table-card-title">👤 Tourist_Basic <span class="frag-badge">VERTICAL FRAGMENT A</span></div>
         </div>
-        <div id="tourist-basic-table"><div class="loading">Loading from Oracle...</div></div>
+        <div id="tourist-basic-table"><div class="loading">Loading...</div></div>
       </div>
       <div class="table-card">
         <div class="table-card-header">
           <div class="table-card-title">🔒 Tourist_Contact <span class="frag-badge">VERTICAL FRAGMENT B</span></div>
         </div>
-        <div id="tourist-contact-table"><div class="loading">Loading from Oracle...</div></div>
+        <div id="tourist-contact-table"><div class="loading">Loading...</div></div>
       </div>
     </div>
   </div>
  
-  <!-- TAB: FRAGMENTS -->
   <div class="tab-content" id="tab-fragments">
     <div class="grid2">
       <div class="table-card">
@@ -179,7 +169,6 @@
     </div>
   </div>
  
-  <!-- TAB: TRIPS -->
   <div class="tab-content" id="tab-trips">
     <div class="table-card">
       <div class="table-card-header">
@@ -189,7 +178,6 @@
     </div>
   </div>
  
-  <!-- TAB: BOOKINGS -->
   <div class="tab-content" id="tab-bookings">
     <div class="table-card">
       <div class="table-card-header">
@@ -199,7 +187,6 @@
     </div>
   </div>
  
-  <!-- TAB: ITINERARY -->
   <div class="tab-content" id="tab-itinerary">
     <div class="itinerary-form">
       <input type="number" id="tourist-id-input" placeholder="Tourist ID (e.g. 1)" min="1"/>
@@ -208,14 +195,13 @@
     <div id="itinerary-result" class="itinerary-result" style="display:none;"></div>
   </div>
  
-  <!-- TAB: SQL -->
   <div class="tab-content" id="tab-sql">
     <div class="sql-panel">
       <div class="sql-panel-header">
         <div class="sql-dot" style="background:#ef4444"></div>
         <div class="sql-dot" style="background:#f59e0b"></div>
         <div class="sql-dot" style="background:#10b981"></div>
-        fragmentation.sql · north_user @ FREEPDB1
+        fragmentation.sql · north_user @ Supabase (PostgreSQL)
       </div>
       <pre><span class="cm">-- ══════════════════════════════════════════════
 -- SITE A: Fragmentation SQL (north_user)
@@ -230,27 +216,14 @@
  
 <span class="cm">-- Horizontal Fragmentation of Trips</span>
 <span class="kw">CREATE TABLE</span> Trips_North <span class="kw">AS</span>
-  <span class="kw">SELECT</span> * <span class="kw">FROM</span> Trips <span class="kw">WHERE</span> Region = <span class="str">N'الشمال'</span>;
+  <span class="kw">SELECT</span> * <span class="kw">FROM</span> Trips <span class="kw">WHERE</span> Region = <span class="str">'الشمال'</span>;
  
 <span class="cm">-- Mixed Fragmentation of Bookings</span>
 <span class="kw">CREATE TABLE</span> Booking_Info <span class="kw">AS</span>
   <span class="kw">SELECT</span> BookingID, TouristID, TripID <span class="kw">FROM</span> Bookings;
  
 <span class="kw">CREATE TABLE</span> Booking_Amount <span class="kw">AS</span>
-  <span class="kw">SELECT</span> BookingID, Amount <span class="kw">FROM</span> Bookings;
- 
-<span class="cm">-- DB Links to other sites</span>
-<span class="kw">CREATE DATABASE LINK</span> south_db
-  <span class="kw">CONNECT TO</span> south_user <span class="kw">IDENTIFIED BY</span> south_pass
-  <span class="kw">USING</span> <span class="str">'(DESCRIPTION=...FREEPDB1...)'</span>;
- 
-<span class="cm">-- Global View</span>
-<span class="kw">CREATE VIEW</span> All_Trips <span class="kw">AS</span>
-  <span class="kw">SELECT</span> * <span class="kw">FROM</span> Trips
-  <span class="kw">UNION</span>
-  <span class="kw">SELECT</span> * <span class="kw">FROM</span> <span class="fn">Trips@south_db</span>
-  <span class="kw">UNION</span>
-  <span class="kw">SELECT</span> * <span class="kw">FROM</span> <span class="fn">Trips@east_db</span>;</pre>
+  <span class="kw">SELECT</span> BookingID, Amount <span class="kw">FROM</span> Bookings;</pre>
     </div>
   </div>
 </div>
@@ -269,7 +242,7 @@ function makeTable(rows, cols) {
   if (!rows || rows.length === 0) return '<div class="loading">No data found</div>';
   const headers = cols || Object.keys(rows[0]);
   return `<table>
-    <thead><tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+    <thead><tr>${headers.map(h => `<th>${h.toUpperCase()}</th>`).join('')}</tr></thead>
     <tbody>${rows.map(r => `<tr>${headers.map(h => `<td>${r[h] ?? '-'}</td>`).join('')}</tr>`).join('')}</tbody>
   </table>`;
 }
@@ -286,7 +259,7 @@ async function load(endpoint, containerId, cols) {
     }
     return data.rows?.length || 0;
   } catch(e) {
-    document.getElementById(containerId).innerHTML = `<div class="error">⚠ Cannot connect to server. Make sure Node.js is running on port 3000.</div>`;
+    document.getElementById(containerId).innerHTML = `<div class="error">⚠ Cannot connect to server.</div>`;
     return 0;
   }
 }
@@ -295,8 +268,9 @@ async function loadStats() {
   try {
     const res = await fetch(API + '/api/stats');
     const d = await res.json();
+    // FIX: was d.tripsNorth — server returns d.trips
     document.getElementById('s-tourists').textContent = d.tourists;
-    document.getElementById('s-trips').textContent = d.tripsNorth;
+    document.getElementById('s-trips').textContent = d.trips;
     document.getElementById('s-bookings').textContent = d.bookings;
   } catch(e) {}
 }
@@ -314,29 +288,29 @@ async function loadItinerary() {
       el.innerHTML = '<div class="error">No itinerary found for this Tourist ID</div>';
       return;
     }
+    // FIX: PostgreSQL returns lowercase column names — was r.TOURISTNAME etc.
     const r = data.rows[0];
     el.innerHTML = `
-      <div class="itin-item"><div class="itin-label">TOURIST</div><div class="itin-value">${r.TOURISTNAME}</div></div>
-      <div class="itin-item"><div class="itin-label">BOOKING ID</div><div class="itin-value"><span class="pill pill-blue">${r.BOOKINGID}</span></div></div>
-      <div class="itin-item"><div class="itin-label">REGION</div><div class="itin-value">${r.REGION}</div></div>
-      <div class="itin-item"><div class="itin-label">DATES</div><div class="itin-value">${r.STARTDATE} → ${r.ENDDATE}</div></div>
-      <div class="itin-item"><div class="itin-label">AMOUNT</div><div class="itin-value"><span class="pill pill-green">${r.AMOUNT} DZD</span></div></div>
+      <div class="itin-item"><div class="itin-label">TOURIST</div><div class="itin-value">${r.touristname}</div></div>
+      <div class="itin-item"><div class="itin-label">BOOKING ID</div><div class="itin-value"><span class="pill pill-blue">${r.bookingid}</span></div></div>
+      <div class="itin-item"><div class="itin-label">REGION</div><div class="itin-value">${r.region}</div></div>
+      <div class="itin-item"><div class="itin-label">DATES</div><div class="itin-value">${r.startdate} → ${r.enddate}</div></div>
+      <div class="itin-item"><div class="itin-label">AMOUNT</div><div class="itin-value"><span class="pill pill-green">${r.amount} DZD</span></div></div>
     `;
   } catch(e) {
     el.innerHTML = '<div class="error">Server not reachable</div>';
   }
 }
  
-// Init
+// FIX: corrected API paths — were /api/site-a/... which don't exist on server
 loadStats();
-load('/api/site-a/tourist-basic', 'tourist-basic-table', ['TOURISTID','NAME']);
-load('/api/site-a/tourist-contact', 'tourist-contact-table', ['TOURISTID','NATIONALITY','CONTACT']);
-load('/api/site-a/trips-north', 'trips-north-table');
-load('/api/site-a/booking-info', 'booking-info-table');
-load('/api/site-a/booking-amount', 'booking-amount-table');
-load('/api/site-a/trips', 'trips-table');
-load('/api/site-a/bookings', 'bookings-table');
+load('/api/tourist-basic',   'tourist-basic-table',   ['touristid','name']);
+load('/api/tourist-contact', 'tourist-contact-table', ['touristid','nationality','contact']);
+load('/api/trips-north',     'trips-north-table');
+load('/api/booking-info',    'booking-info-table');
+load('/api/booking-amount',  'booking-amount-table');
+load('/api/trips',           'trips-table');
+load('/api/bookings',        'bookings-table');
 </script>
 </body>
 </html>
- 

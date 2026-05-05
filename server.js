@@ -51,7 +51,7 @@ app.get('/api/global/all-trips', async (req, res) => {
 
 app.get('/api/global/itinerary', async (req, res) => {
   res.json(await runQuery(`
-    SELECT b.bookingid, t.name AS TouristName, b.amount, tr.region, tr.startdate, tr.enddate
+    SELECT b.bookingid, t.name AS touristname, b.amount, tr.region, tr.startdate, tr.enddate
     FROM bookings b
     JOIN tourist_basic t ON b.touristid = t.touristid
     JOIN trips tr ON b.tripid = tr.tripid
@@ -61,7 +61,7 @@ app.get('/api/global/itinerary', async (req, res) => {
 
 app.get('/api/global/itinerary/:touristId', async (req, res) => {
   res.json(await runQuery(`
-    SELECT t.name AS TouristName, b.bookingid, b.amount, tr.region, tr.startdate, tr.enddate
+    SELECT t.name AS touristname, b.bookingid, b.amount, tr.region, tr.startdate, tr.enddate
     FROM tourist_basic t
     JOIN booking_info b ON t.touristid = b.touristid
     JOIN trips tr ON b.tripid = tr.tripid
@@ -69,10 +69,11 @@ app.get('/api/global/itinerary/:touristId', async (req, res) => {
   `, [parseInt(req.params.touristId)]));
 });
 
+// FIX: stats now count trips_north for the "TRIPS (NORTH)" stat
 app.get('/api/stats', async (req, res) => {
   const [tourists, trips, bookings] = await Promise.all([
     runQuery('SELECT COUNT(*) AS cnt FROM tourists'),
-    runQuery('SELECT COUNT(*) AS cnt FROM trips'),
+    runQuery('SELECT COUNT(*) AS cnt FROM trips_north'),
     runQuery('SELECT COUNT(*) AS cnt FROM bookings'),
   ]);
   res.json({
