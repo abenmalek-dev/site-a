@@ -1,4 +1,5 @@
 const express = require('express');
+require('dns').setDefaultResultOrder('ipv4first');
 const { Pool } = require('pg');
 const cors = require('cors');
 const path = require('path');
